@@ -1,0 +1,31 @@
+Table Moziterem{
+  id integer [pk, increment]
+  nev string
+  kapacitas integer
+}
+
+Table Felelos{
+  id integer [pk, increment]
+  nev string 
+}
+
+Table Vetites{
+  id integer [pk, increment]
+  idopont timestamp
+  film_id integer [ref: < Film.id]
+  terem_id integer [ref: < Moziterem.id]
+  felelos_id integer [ref: < Felelos.id]
+  letszam integer
+}
+
+Table Film{
+  id integer [pk, increment]
+  nev string
+  korhatar integer
+  kategoria_id integer [ref: < Kategoria.id]
+}
+
+Table Kategoria{
+  id integer [pk, increment]
+  nev string
+}
