@@ -1,0 +1,45 @@
+@startuml Diagram
+
+skinparam Style strictuml
+skinparam SequenceMessageAlignment center
+
+participant User as user 
+participant Application as app 
+participant XML as xml
+participant Database as db 
+
+activate user
+user -> app : Felhasználói adatok megadása
+deactivate user
+
+activate app
+app -> xml : Adatok vizsgálata
+deactivate app
+
+activate xml
+xml -> app : Helyes adat validáció, response
+activate app
+xml -> app : Userhez tartozó SQL-ek beolvasása a programba
+deactivate xml 
+
+app -> user : Felhasználó beléptetése
+activate user
+app -> user : Felhasználó lehetséges SQL utasításainak listázása
+deactivate app
+
+user -> app : Művelet kiválasztása
+deactivate user
+
+activate app
+app -> db : SQL végrahajtása az adatbázison
+deactivate app
+
+activate db
+db -> app : Sikeres végrehajtás response
+deactivate db
+
+activate app
+app -> user : Program visszajelez a sikeres végrehajtásról
+deactivate app
+
+@enduml
