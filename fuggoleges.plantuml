@@ -1,0 +1,37 @@
+@startuml Ticket Handling
+
+:Probléma felmerül;
+
+
+
+while(Valid / fennáll még a probléma?) is (igen)
+
+  while(Tudunk elég információt a problémáról?) is (nem)
+
+  :User megkéresése;
+
+  endwhile(igen)
+
+  :Megoldás megalkotása;
+
+  if(Implementálható backend-ben, vagy csak a usernél?) then (backend)
+    :Megfelelő időpont megtalálása business szempontból;    
+  else (user kell)
+    :User megkeresése, hogy mikor alkalmas;
+  endif
+  :Változtatás implementálása;
+
+endwhile (nem)
+
+:Elégedettség felmérése;
+
+if(Van negatív visszajelzés?) then (igen)
+  :Egyeztetés, tanulság levonása;    
+else (nincs)
+    :Pozitív visszajelzés összegyűjtése;
+endif
+
+:Ticket lezárása;
+
+stop
+@enduml
